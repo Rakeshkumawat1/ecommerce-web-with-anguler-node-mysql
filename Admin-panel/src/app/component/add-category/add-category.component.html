@@ -1,0 +1,78 @@
+
+<div class="content-wrapper">
+
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row md-2">
+                <div class="col-sm-6">
+                    <h1>Add New Category</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3>Add Category</h3>
+                        </div>
+
+                        <ng-container *ngIf="addCategoryMessage?.length > 0">
+                            <div class="alert alert-success alert-dismissible">
+                              {{addCategoryMessage}}
+                            </div>
+                          </ng-container>
+
+                        <form (ngSubmit)="addCategory()" [formGroup]="addCategoryForm"  novalidate>
+                            <div class="form-group">
+                                <label for="cname">Enter Category Name</label>
+
+                                <input type="text" class="form-control" 
+                                formControlName="cname" name="cname" id="cname" 
+                                placeholder="Enter Category name..."
+                                required>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-control-feedback">
+                                      <ng-container *ngIf="formControls.cname.errors?.taken && formControls.cname.touched">
+                                         <span class="text-danger align-middle">
+                                            <i class="fa fa-close"> Category Already Added</i>
+                                         </span>
+                                      </ng-container>
+                                      <ng-container *ngIf="formControls.cname.pending && formControls.cname.touched">
+                                        <span class="text-info align-middle">
+                                          <i class="fa fa-hourglass"> Checking Category ....</i>
+                                        </span>
+                                      </ng-container>
+                                      <ng-container *ngIf="!formControls.cname.errors && formControls.cname.touched && !formControls.cname.pending">
+                                         <span class="text-success align-middle">
+                                                        <i class="fa fa-check"> Category Available</i>
+                                                    </span>
+                                      </ng-container>
+                                      <ng-container *ngIf="formControls.cname.errors?.required && formControls.cname.touched">
+                                                      <span class="text-danger align-middle">
+                                                        <i class="fa fa-check"> Category Required</i>
+                                                    </span>
+                                      </ng-container>
+                            
+                                    </div>
+                                  </div>
+
+                            </div>
+                            <div class="card-footer">
+                                <button [disabled]="(addCategoryForm.invalid || addCategoryForm.pending) && addCategoryForm.touched "
+                                type="submit" class="btn btn-primary">Submit</button>
+
+                              </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
