@@ -1,0 +1,80 @@
+
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container">
+          <div class="card login-card">
+            <div class="row no-gutters">
+              <div class="col-md-5">
+                <img src="assets/img/login.jpg" alt="login" class="login-card-img">
+              </div>
+              <div class="col-md-7">
+                <div class="card-body">
+                  <div class="brand-wrapper mt-0">
+                    <img src="assets/img/logo.svg" alt="logo" class="logo">
+                  </div>
+                  <p class="login-card-description">Sign into your account</p>
+                  
+                  <form novalidate #myform="ngForm">
+                      <div class="form-group">
+                        <label for="email" class="sr-only">Email</label>
+                        <input type="email" [(ngModel)]="email" name="email" id="email" class="form-control" placeholder="Email address" required>
+                      </div>
+                      <div class="form-group mb-4">
+                        <label for="password" class="sr-only">Password</label>
+                        <input type="password"  [(ngModel)]="password" name="password" id="password" class="form-control" placeholder="***********" required>
+                      </div>
+                      <button class="btn btn-block login-btn mb-4 " (click)="login(myform)" [disabled]="myform.invalid && myform.touched" >Login</button>
+                    </form>
+                    <a href="#!" class="forgot-password-link">Forgot password?</a>
+                    <p class="login-card-footer-text mb-2">Don't have an account? <a routerLink="/register" class="text-reset">Register here</a></p>
+
+                    <h4 class="text-uppercase"><strong>Login Using</strong></h4>
+                    <button (click)="signInWithGoogle()" class="btn btn-danger btn-sm btn-block mt-4 mb-3">
+                        <span><i class="fa fa-google"></i>oogle</span></button>
+
+
+
+                    <nav class="login-card-footer-nav">
+                      <a href="#!">Terms of use.</a>
+                      <a href="#!">Privacy policy</a>
+                    </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <!-- <div class="container">
+        <div class="jumbotron">
+          <div class="row">
+            <div class="col-md-6 d-flex mx-auto flex-column">
+              <ng-container *ngIf="loginMessage?.length > 0">
+                <div class="alert alert-danger alert-dismissible text-center">
+                  {{loginMessage}}
+                </div>
+              </ng-container>
+              <form novalidate #myform="ngForm">
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input class="form-control" id="email" type="email" [(ngModel)]="email" name="email" required>
+                </div>
+      
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input class="form-control" id="password" type="password" [(ngModel)]="password" name="password" required>
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-around">
+                  <button class="btn btn-primary btn-sm btn-block" (click)="login(myform)" [disabled]="myform.invalid && myform.touched">Login</button>
+                  <hr>
+                  <h4 class="text-uppercase"><strong>Login Using</strong></h4>
+      
+                  <button (click)="signInWithGoogle()" class="btn btn-danger btn-sm btn-block mt-4"><span><i
+                    class="fa fa-google"></i> Google </span>
+                  </button>
+                </div>
+              </form>
+      
+      
+            </div>
+          </div>
+        </div>
+      </div> -->
